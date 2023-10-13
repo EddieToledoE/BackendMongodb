@@ -47,3 +47,48 @@ Content-Type: application/json
 ### Borrar por Id
 DELETE  http://localhost:3000/productos/borrar/6528c3e493e57863ca801f4e
 
+
+
+
+### Crear un Cliente
+POST http://localhost:3000/Cliente/crear
+Content-Type: application/json
+
+{
+    "Nombre":"Horacio-Zoe",
+    "Apellido":"Hernandez",
+    "Telefono":96112,
+    "Direccion":{
+        "CP":29025,
+        "Calle":"las-sbrisas",
+        "Municipio":"Suchiapa",
+        "Estado":"Chiapas"
+    }
+}
+
+
+### Obtener todos los Clientes
+GET http://localhost:3000/Cliente/obtener
+
+### Obtener todos los Clientes por id
+GET http://localhost:3000/Cliente/obtener/65299b1a78cd8c930abea02c
+
+
+
+
+### Actualizar por Id
+PATCH  http://localhost:3000/Cliente/actualizar/65299aa278cd8c930abea027
+Content-Type: application/json
+{
+    "Nombre":"eddi",
+    "Apellido":"turulo",
+    "Telefono":22222,
+    "Direccion":{
+        "CP":225,
+        "Calle":"Tonala",
+        "Municipio":"viva-tonala",
+        "Estado":"Chiapas"
+    }
+}
+
+DELETE  http://localhost:3000/Cliente/borrar/65299aa278cd8c930abea027
