@@ -1,24 +1,59 @@
 const express = require("express");
 const router = express.Router();
+const ProductoSchema = require("../Models/Productos.model");
 
-router.get("/", (req, res, next) => {
-  res.send("Obteniendo la lista de productos");
+router.get("/obtener", (req, res, next) => {
+  ProductoSchema.find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
-router.post("/", (req, res, next) => {
-  res.send("Producto creado");
+router.post("/crear", (req, res, next) => {
+  const producto = ProductoSchema(req.body);
+  producto
+    .save()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
-router.get("/:id", (req, res, next) => {
-  res.send("Obtener un producto en especifico");
+router.get("/obtener/:id", (req, res, next) => {
+  const { id } = req.params;
+  ProductoSchema.findById(id)
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
-router.patch("/:id", (req, res, next) => {
-  res.send("Actualizar Producto especifico");
+router.patch("/actualizar/:id", (req, res, next) => {
+  const { id } = req.params;
+  const {
+    cantidad_stock,
+    costo,
+    tipo,
+    producto: { nombre, marca },
+  } = req.body;
+  ProductoSchema.updateOne(
+    { _id: id },
+    {
+      $set: {
+        cantidad_stock,
+        costo,
+        tipo,
+        producto: {
+          nombre,
+          marca,
+        },
+      },
+    }
+  )
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
-router.delete("/:id", (req, res, next) => {
-  res.send("Borrar un producto en especifico");
+router.delete("/borrar/:id", (req, res, next) => {
+  const { id } = req.params;
+  ProductoSchema.deleteOne({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
 module.exports = router;
