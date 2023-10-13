@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Crear un usuario
 POST http://localhost:3000/usuarios/crear
 Content-Type: application/json
@@ -14,21 +15,163 @@ Content-Type: application/json
 
 ### Obtener todos los usuarios
 GET http://localhost:3000/usuarios/obtener
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+### Crear un Cliente
+POST http://localhost:3000/Cliente/crear
+Content-Type: application/json
+
+{
+    "Nombre":"Horacio-Zoe",
+    "Apellido":"Hernandez",
+    "Telefono":96112,
+    "Direccion":{
+        "CP":29025,
+        "Calle":"las-sbrisas",
+        "Municipio":"Suchiapa",
+        "Estado":"Chiapas"
+    }
+}
+
+
+### Crear un producto de forma async
+POST http://localhost:3000/productos/crearasync
+Content-Type: application/json
+
+{
+    "cantidad_stock":17,
+    "costo":500,
+    "tipo":"Pomada",
+    "producto":{
+        "nombre":"Mariguanol",
+        "marca":"Chado"
+    }
+}
+>>>>>>> 1676514859c9f83b4f39c5fb8f27b567951605a9
 
 ### Producto por Id
 GET http://localhost:3000/usuarios/obtener/65299b7060013362e375d269
 
 ### Actualizar por Id
+<<<<<<< HEAD
 PATCH  http://localhost:3000/usuarios/actualizar/65299b7060013362e375d269
+=======
+PATCH  http://localhost:3000/Cliente/actualizar/65299aa278cd8c930abea027
+>>>>>>> 1676514859c9f83b4f39c5fb8f27b567951605a9
 Content-Type: application/json
-
 {
+<<<<<<< HEAD
     "Nombre_usuario":"Admin",
     "Contraseña":"1234",
     "Persona":{
         "Nombre":"Rodrigo Eliseo",
         "Apellido":"García",
         "Puesto":"Gerente"
+=======
+    "Nombre":"eddi",
+    "Apellido":"turulo",
+    "Telefono":22222,
+    "Direccion":{
+        "CP":225,
+        "Calle":"Tonala",
+        "Municipio":"viva-tonala",
+        "Estado":"Chiapas"
+>>>>>>> 1676514859c9f83b4f39c5fb8f27b567951605a9
     }
 }
 

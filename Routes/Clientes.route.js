@@ -1,18 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const UsuarioSchema = require("../Models/Usuarios.model");
+const ClienteSchema = require("../Models/Clientes.model");
 const { Schema } = require("mongoose");
 
 router.get("/obtener", (req, res, next) => {
-  UsuarioSchema.find()
+  ClienteSchema.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
+
+
 router.post("/crear", async (req, res, next) => {
   try {
-    const usuario = new UsuarioSchema(req.body);
-    const result = await usuario.save();
+    const cliente = new ClienteSchema(req.body);
+    const result = await cliente.save();
     res.send(result);
   } catch (error) {
     console.log(error.message);
@@ -21,7 +23,7 @@ router.post("/crear", async (req, res, next) => {
 
 router.get("/obtener/:id", (req, res, next) => {
   const { id } = req.params;
-  UsuarioSchema.findById(id)
+  ClienteSchema.findById(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -29,22 +31,23 @@ router.get("/obtener/:id", (req, res, next) => {
 router.patch("/actualizar/:id", (req, res, next) => {
   const { id } = req.params;
   const {
-    Nombre_usuario,
-    Contraseña,
-    Persona,
-    usuario: { Nombre, Apellido, Puesto },
+    Nombre,
+    Apellido,
+    Telefono,
+    Direccion: {CP,Calle,Municipio,Estado},
   } = req.body;
-  UsuarioSchema.updateOne(
+ ClienteSchema.updateOne(
     { _id: id },
     {
       $set: {
-        Nombre_usuario,
-        Contraseña,
-        Persona,
-        usuario: {
-          Nombre,
-          Apellido,
-          Marca,
+        Nombre,
+        Apellido,
+        Telefono,
+        Direccion: {
+          CP,
+          Calle,
+          Municipio,
+          Estado,
         },
       },
     }
@@ -55,13 +58,7 @@ router.patch("/actualizar/:id", (req, res, next) => {
 
 router.delete("/borrar/:id", (req, res, next) => {
   const { id } = req.params;
-  UsuarioSchema.deleteOne({ _id: id })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
-
-router.delete("/borrartodos", (req, res, next) => {
-  ProductoSchema.deleteMany({})
+  ClienteSchema.deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
