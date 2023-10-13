@@ -16,6 +16,8 @@ app.use("/productos", ProductoRoute);
 
 const PacienteRoute = require("./Routes/Paciente.route");
 app.use("/paciente", PacienteRoute);
+const ClienteRoute = require("./Routes/Clientes.route");
+app.use("/Cliente", ClienteRoute);
 
 app.use((req, res, next) => {
   const err = new Error("No encontrado");
@@ -37,3 +39,8 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("Servidor iniciado en el puerto 3000....");
 });
+
+
+
+
+
