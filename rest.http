@@ -1,55 +1,99 @@
-### Obtener todos los productos
-GET http://localhost:3000/productos/obtener
-
-### Crear un producto
-POST http://localhost:3000/productos/crear
-Content-Type: application/json
-
-{
-    "cantidad_stock":15,
-    "costo":200,
-    "tipo":"dulces",
-    "producto":{
-        "nombre":"Dulces de propoleo",
-        "marca":"Abejorro"
-    }
-}
-
-### Crear un producto de forma async
-POST http://localhost:3000/productos/crearasync
-Content-Type: application/json
-
-{
-    "cantidad_stock":17,
-    "costo":500,
-    "tipo":"Pomada",
-    "producto":{
-        "nombre":"Mariguanol",
-        "marca":"Chado"
-    }
-}
-
-### Producto por Id
-GET http://localhost:3000/productos/obtener/6528c2a4841edb5523ff12bc
-### Actualizar por Id
-PATCH  http://localhost:3000/productos/actualizar/6528c3e493e57863ca801f4e
-Content-Type: application/json
-
-{
-    "cantidad_stock":15,
-    "costo":200,
-    "tipo":"dulces",
-    "producto":{
-        "nombre":"Dulces de miel",
-        "marca":"Abejorro"
-    }
-}
-### Borrar por Id
-DELETE  http://localhost:3000/productos/borrar/6528c3e493e57863ca801f4e
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 ### Crear un Cliente
 POST http://localhost:3000/Cliente/crear
 Content-Type: application/json
