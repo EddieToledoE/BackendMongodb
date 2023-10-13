@@ -1,49 +1,37 @@
-### Obtener todos los productos
-GET http://localhost:3000/productos/obtener
-
-### Crear un producto
-POST http://localhost:3000/productos/crear
+## Crear un usuario
+POST http://localhost:3000/usuarios/crear
 Content-Type: application/json
 
 {
-    "cantidad_stock":15,
-    "costo":200,
-    "tipo":"dulces",
-    "producto":{
-        "nombre":"Dulces de propoleo",
-        "marca":"Abejorro"
+    "Nombre_usuario":"Admin",
+    "Contraseña":"1234",
+    "Persona":{
+        "Nombre":"Luis David",
+        "Apellido":"Vazquez",
+        "Puesto":"Administrador"
     }
 }
 
-### Crear un producto de forma async
-POST http://localhost:3000/productos/crearasync
-Content-Type: application/json
-
-{
-    "cantidad_stock":17,
-    "costo":500,
-    "tipo":"Pomada",
-    "producto":{
-        "nombre":"Mariguanol",
-        "marca":"Chado"
-    }
-}
+### Obtener todos los usuarios
+GET http://localhost:3000/usuarios/obtener
 
 ### Producto por Id
-GET http://localhost:3000/productos/obtener/6528c2a4841edb5523ff12bc
+GET http://localhost:3000/usuarios/obtener/65299b7060013362e375d269
+
 ### Actualizar por Id
-PATCH  http://localhost:3000/productos/actualizar/6528c3e493e57863ca801f4e
+PATCH  http://localhost:3000/usuarios/actualizar/65299b7060013362e375d269
 Content-Type: application/json
 
 {
-    "cantidad_stock":15,
-    "costo":200,
-    "tipo":"dulces",
-    "producto":{
-        "nombre":"Dulces de miel",
-        "marca":"Abejorro"
+    "Nombre_usuario":"Admin",
+    "Contraseña":"1234",
+    "Persona":{
+        "Nombre":"Rodrigo Eliseo",
+        "Apellido":"García",
+        "Puesto":"Gerente"
     }
 }
+
 ### Borrar por Id
-DELETE  http://localhost:3000/productos/borrar/6528c3e493e57863ca801f4e
+DELETE  http://localhost:3000/usuarios/borrar/65299dc960013362e375d27a
 

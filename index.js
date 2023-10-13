@@ -11,8 +11,8 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-const ProductoRoute = require("./Routes/Productos.route");
-app.use("/productos", ProductoRoute);
+const UserRoute = require("./Routes/Usuarios.route");
+app.use("/usuarios", UserRoute);
 
 app.use((req, res, next) => {
   const err = new Error("No encontrado");

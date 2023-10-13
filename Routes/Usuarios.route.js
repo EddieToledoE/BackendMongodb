@@ -1,26 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const ProductoSchema = require("../Models/Productos.model");
+const UsuarioSchema = require("../Models/Usuarios.model");
 const { Schema } = require("mongoose");
 
 router.get("/obtener", (req, res, next) => {
-  ProductoSchema.find()
+  UsuarioSchema.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-router.post("/crear", (req, res, next) => {
-  const producto = ProductoSchema(req.body);
-  producto
-    .save()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
-
-router.post("/crearasync", async (req, res, next) => {
+router.post("/crear", async (req, res, next) => {
   try {
-    const producto = new ProductoSchema(req.body);
-    const result = await producto.save();
+    const usuario = new UsuarioSchema(req.body);
+    const result = await usuario.save();
     res.send(result);
   } catch (error) {
     console.log(error.message);
@@ -29,7 +21,7 @@ router.post("/crearasync", async (req, res, next) => {
 
 router.get("/obtener/:id", (req, res, next) => {
   const { id } = req.params;
-  ProductoSchema.findById(id)
+  UsuarioSchema.findById(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -37,21 +29,22 @@ router.get("/obtener/:id", (req, res, next) => {
 router.patch("/actualizar/:id", (req, res, next) => {
   const { id } = req.params;
   const {
-    cantidad_stock,
-    costo,
-    tipo,
-    producto: { nombre, marca },
+    Nombre_usuario,
+    Contraseña,
+    Persona,
+    usuario: { Nombre, Apellido, Puesto },
   } = req.body;
-  ProductoSchema.updateOne(
+  UsuarioSchema.updateOne(
     { _id: id },
     {
       $set: {
-        cantidad_stock,
-        costo,
-        tipo,
-        producto: {
-          nombre,
-          marca,
+        Nombre_usuario,
+        Contraseña,
+        Persona,
+        usuario: {
+          Nombre,
+          Apellido,
+          Marca,
         },
       },
     }
@@ -62,7 +55,7 @@ router.patch("/actualizar/:id", (req, res, next) => {
 
 router.delete("/borrar/:id", (req, res, next) => {
   const { id } = req.params;
-  ProductoSchema.deleteOne({ _id: id })
+  UsuarioSchema.deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
