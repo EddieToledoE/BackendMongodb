@@ -13,7 +13,8 @@ mongoose
 
 const UserRoute = require("./Routes/Usuarios.route");
 app.use("/usuarios", UserRoute);
-
+const ProductoRoute = require("./Routes/Productos.route");
+app.use("/productos", ProductoRoute);
 const PacienteRoute = require("./Routes/Paciente.route");
 app.use("/paciente", PacienteRoute);
 const ClienteRoute = require("./Routes/Clientes.route");
