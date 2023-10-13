@@ -15,6 +15,20 @@ Content-Type: application/json
     }
 }
 
+### Crear un producto de forma async
+POST http://localhost:3000/productos/crearasync
+Content-Type: application/json
+
+{
+    "cantidad_stock":17,
+    "costo":500,
+    "tipo":"Pomada",
+    "producto":{
+        "nombre":"Mariguanol",
+        "marca":"Chado"
+    }
+}
+
 ### Producto por Id
 GET http://localhost:3000/productos/obtener/6528c2a4841edb5523ff12bc
 ### Actualizar por Id
