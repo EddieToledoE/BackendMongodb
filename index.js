@@ -14,6 +14,9 @@ mongoose
 const ProductoRoute = require("./Routes/Productos.route");
 app.use("/productos", ProductoRoute);
 
+const PacienteRoute = require("./Routes/Paciente.route");
+app.use("/paciente", PacienteRoute);
+
 app.use((req, res, next) => {
   const err = new Error("No encontrado");
   err.status = 404;

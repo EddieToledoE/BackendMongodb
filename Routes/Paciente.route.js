@@ -1,26 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const ProductoSchema = require("../Models/Productos.model");
+const PacienteSchema = require("../Models/Paciente.model");
 const { Schema } = require("mongoose");
 
 router.get("/obtener", (req, res, next) => {
-  ProductoSchema.find()
+  PacienteSchema.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-router.post("/crear", (req, res, next) => {
-  const producto = ProductoSchema(req.body);
-  producto
-    .save()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
-
-router.post("/crearasync", async (req, res, next) => {
+router.post("/crear", async (req, res, next) => {
   try {
-    const producto = new ProductoSchema(req.body);
-    const result = await producto.save();
+    const paciente = new PacienteSchema(req.body);
+    const result = await paciente.save();
     res.send(result);
   } catch (error) {
     console.log(error.message);
@@ -29,30 +21,25 @@ router.post("/crearasync", async (req, res, next) => {
 
 router.get("/obtener/:id", (req, res, next) => {
   const { id } = req.params;
-  ProductoSchema.findById(id)
+  PacienteSchema.findById(id)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
 router.patch("/actualizar/:id", (req, res, next) => {
   const { id } = req.params;
-  const {
-    cantidad_stock,
-    costo,
-    tipo,
-    producto: { nombre, marca },
-  } = req.body;
-  ProductoSchema.updateOne(
+  const { nombre, apellido, telefono, edad, codigo_ajeno, codigo_propio } =
+    req.body;
+  PacienteSchema.updateOne(
     { _id: id },
     {
       $set: {
-        cantidad_stock,
-        costo,
-        tipo,
-        producto: {
-          nombre,
-          marca,
-        },
+        nombre,
+        apellido,
+        telefono,
+        edad,
+        codigo_ajeno,
+        codigo_propio,
       },
     }
   )
@@ -62,13 +49,13 @@ router.patch("/actualizar/:id", (req, res, next) => {
 
 router.delete("/borrar/:id", (req, res, next) => {
   const { id } = req.params;
-  ProductoSchema.deleteOne({ _id: id })
+  PacienteSchema.deleteOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
-router.delete("/borrartodos", (req, res, next) => {
-  ProductoSchema.deleteMany({})
+router.delete("/borrartodo", (req, res, next) => {
+  PacienteSchema.deleteMany({})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });

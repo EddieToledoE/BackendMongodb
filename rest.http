@@ -15,19 +15,7 @@ Content-Type: application/json
     }
 }
 
-### Crear un producto de forma async
-POST http://localhost:3000/productos/crearasync
-Content-Type: application/json
 
-{
-    "cantidad_stock":17,
-    "costo":500,
-    "tipo":"Pomada",
-    "producto":{
-        "nombre":"Mariguanol",
-        "marca":"Chado"
-    }
-}
 
 ### Producto por Id
 GET http://localhost:3000/productos/obtener/6528c2a4841edb5523ff12bc
@@ -47,3 +35,40 @@ Content-Type: application/json
 ### Borrar por Id
 DELETE  http://localhost:3000/productos/borrar/6528c3e493e57863ca801f4e
 
+### crear Paciente
+POST http://localhost:3000/paciente/crear
+Content-Type: application/json
+
+{
+    "nombre":"David",
+    "apellido":"Vazquez",
+    "telefono":9618902353,
+    "edad":19,
+    "codigo_ajeno":123,
+    "codigo_propio":456
+}
+
+### Obtener todos los pacientes
+GET http://localhost:3000/paciente/obtener
+
+### Paciente por Id
+GET http://localhost:3000/paciente/obtener/652996b0453007e2b05673f4
+### Actualizar Paciente por Id
+PATCH  http://localhost:3000/paciente/actualizar/652999e78272c357efe7400b
+Content-Type: application/json
+
+
+{
+    "nombre":"Luis",
+    "apellido":"Vazquez",
+    "telefono":9618902353,
+    "edad":19,
+    "codigo_ajeno":123,
+    "codigo_propio":456
+}
+
+### Borrar por Id
+DELETE  http://localhost:3000/paciente/borrar/652999e78272c357efe7400b
+
+### Borrar por Todos los clientes
+DELETE  http://localhost:3000/paciente/borrartodo
