@@ -4,8 +4,7 @@ const mongoose = require("mongoose");
 
 app.use(express.json());
 
-mongoose
-  .connect("mongodb+srv://223191:Wintersito123@cluster0.rsowkuq.mongodb.net/zs")
+mongoose.connect("mongodb+srv://223191:Wintersito123@cluster0.rsowkuq.mongodb.net/zs")
   .then(() => {
     console.log("mongodb conectado");
   })
